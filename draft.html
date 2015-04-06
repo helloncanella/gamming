@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script type="text/javascript">
+document.onkeydown = function(event) {
+ event = event || window.event;
+
+ var e = event.keyCode;
+
+ //if (e==87 /*w*/){
+  up = true;
+  throw('up'); 
+ //}
+
+ if (e==65 /*a*/){
+  left = true;
+ }
+
+ if (e==83 /*s*/){
+  down = true;
+ }
+
+ if (e==68 /*d*/){
+  right = true;
+ }
+}
+
+document.onkeyup=function(event) {
+ event = event || window.event;
+
+ var e = event.keyCode;
+
+ //if (e==87 /*w*/){
+  up = false;
+  throw('up'); 
+ //}
+
+ if (e==65 /*a*/){
+  left = false;
+ }
+
+ if (e==83 /*s*/){
+  down = false;
+ }
+
+ if (e==68 /*d*/){
+  right = false;
+ }
+}
+</script>
+</head>
+
+<body>
+    <input id="ss" type="button" value="start/stop" />
+    <div id="container" style="border:1px solid; cursor:none; width:480px; height:320px;">
+        <canvas id="canvas" width="480" height="320">
+            Canvas not displaying.
+        </canvas>
+    </div>
+  
+</body>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Index</title>
+ </head>
+ <body>
+	
+	
+ 	<script>
+
+		var input = {
+
+			bindings:{},
+			
+
+			bind:function(key,action){
+				this.bindings[key] = action;
+				
+			},
+
+			print: function(){
+				
+				for(property in this.bindings){
+		 			console.log(property,"=>",this.bindings[property]); 
+		 		}
+			
+			}
+
+		} 		
+
+		input.bind("w","Up");
+		input.bind("a","Down");
+		input.bind("h","Hellon");
+
+		input.print(); 
+
+ 			
+ 	</script>
+
+
+ </body>
+ </html> 

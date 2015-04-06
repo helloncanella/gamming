@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<p id="reporterKey"></p>
+	<p id="reporterMouse"></p>
+
+	<script>
+
+		function InputManager(){
+
+			this.actions =  {};
+			this.bindings =  {};
+
+			this.mouse =  {
+				x: 0,
+				y: 0
+			};
+
+			var self = this;
+
+			this.setup = function(){
+				
+				//Tracing a map between keys and actions
+				this.bind(38,"up");
+				this.bind(37,"left");
+				this.bind(40,"down");				
+				this.bind(39,"right");
+				
+				window.addEventListener('keydown', self.onKeyDown);
+				window.addEventListener('keyup', self.onKeyUp);
+				window.addEventListener('mousemove', self.onMouseMove);
+
+			};
+
+			this.bind = function(key,action){
+				self.bindings[key] = action;
+			};
+
+			this.onMouseMove = function(event){
+				
+				self.mouse.x = event.clientX;
+				self.mouse.y = event.clientY;
+				document.getElementById("reporterMouse").innerHTML = self.mouse.x+","+self.mouse.y;
+					
+			};
+
+				
+			this.onKeyDown =  function(event) {
+				var code = event.keyCode;
+
+				action = self.bindings[code];
+
+				//if the key correspond to a item of map assert the...
+				if(action){
+					self.actions[action] = true;
+					document.getElementById("reporterKey").innerHTML = action; 
+				
+					return action;
+				
+				}else{
+					return null
+				}
+			};
+
+
+			
+			this.onKeyUp = function (event) {
+				var code = event.keyCode;
+
+				var action = self.bindings[code];	
+
+				if(action){
+					self.actions[action] = false;
+					
+				}
+			};
+
+
+		}
+
+		var input = new InputManager();
+
+		input.setup();
+
+	</script>
+
+
+	
+</body>
+</html>
